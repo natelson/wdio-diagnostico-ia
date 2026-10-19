@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="pt-BR">
+<head><meta charset="utf-8"><title>Banco Demo · Fatura</title><link rel="stylesheet" href="estilo.css"></head>
+<body>
+<header><strong>Banco Demo</strong><nav><span id="saudacao"></span><a href="inicio.html">Início</a><a href="cartao.html">Meu cartão</a></nav></header>
+<main>
+  <div class="cartao">
+    <h1>Fatura</h1>
+    <div id="fatura"><p class="carregando">Carregando fatura...</p></div>
+    <div id="mensagem"></div>
+  </div>
+</main>
+<script src="app.js"></script>
+<script>
+  exigirLogin();
+  async function carregar() {
+    const { dados } = await api('fatura');
+    const linhas = dados.parcelas.map((p) => `
+      <tr data-testid="parcela-${p.id}">
+        <td>${p.descricao}</td><td>${p.parcela}</td><td>${brl(p.valor)}</td>
+        <td>${p.antecipada ? '<span data-testid="parcela-antecipada">Antecipada</span>'
+                           : `<button data-testid="antecipar-${p.id}" data-id="${p.id}">Antecipar</button>`}</td>
+      </tr>`).join('');
+    document.querySelector('#fatura').innerHTML = `
+      <p>Competência ${dados.competencia} · vencimento ${dados.vencimento.split('-').reverse().join('/')}</p>
+      <p>Total: <strong data-testid="fatura-total">${brl(dados.total)}</strong></p>
+      <table><thead><tr><th>Compra</th><th>Parcela</th><th>Valor</th><th></th></tr></thead><tbody>${linhas}</tbody></table>`;
+    document.querySelectorAll('[data-testid^=antecipar-]').forEach((b) => b.addEventListener('click', () => antecipar(b.dataset.id)));
+  }
+  async function antecipar(id) {
+    const { status, dados } = await api('fatura/antecipar', { id });
+    await carregar();
+    const msg = document.querySelector('#mensagem');
+    msg.className = status === 200 ? 'msg ok' : 'msg erro';
+    msg.setAttribute('data-testid', 'antecipacao-resultado');
+    msg.textContent = status === 200 ? `Parcela antecipada com desconto de ${brl(dados.desconto)}. Protocolo ${dados.protocolo}` : dados.erro;
+  }
+  carregar();
+</script>
+<div id="aviso-estatico" style="position:fixed;left:12px;bottom:12px;z-index:9;font:13px system-ui,sans-serif;background:#1d233c;color:#fff;padding:8px 12px;border-radius:8px;opacity:.92">
+  Versão publicada: a API roda simulada no navegador. Login: 123.456.789-09 / demo123 ·
+  <a href="#" style="color:#9fd" onclick="localStorage.removeItem('bancoDemo:estado');location.reload();return false">reiniciar dados</a></div>
+</body>
+</html>

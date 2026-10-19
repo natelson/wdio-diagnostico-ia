@@ -9,7 +9,8 @@
     "test": "wdio run ./wdio.conf.js",
     "historico": "node scripts/historico.js",
     "metricas": "node scripts/metricas.js",
-    "relatorio": "node scripts/relatorio.js"
+    "relatorio": "node scripts/relatorio.js",
+    "publicar": "node scripts/publicar.js"
   },
   "devDependencies": {
     "@wdio/cli": "~9.32.0",

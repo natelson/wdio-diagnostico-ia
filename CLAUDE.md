@@ -18,6 +18,7 @@ O app (`app/`) é o **Banco Demo**, um banco fictício. Não há código nem dad
 - `npm run historico -- 8`: 8 execuções sem retry, cada uma com o app do zero.
 - `npm run metricas`: consolida `historico/metricas.{json,md}`.
 - `npm run relatorio [-- <json> [html]]`: gera o infográfico (padrão: `relatorio/diagnostico.json` → `relatorio/diagnostico.html`).
+- `npm run publicar`: monta o site do GitHub Pages em `docs/` (landing, Banco Demo com API simulada no navegador, infográfico do gabarito e vídeo em `docs/video/demo.mp4`).
 
 ## Regras para a IA neste repositório
 - Toda conclusão cita evidência: arquivo e linha, ou o número de `historico/metricas.json`. Separe **fato** de **inferência**.

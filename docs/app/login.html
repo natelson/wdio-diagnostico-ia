@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pt-BR">
+<head><meta charset="utf-8"><title>Banco Demo · Entrar</title><link rel="stylesheet" href="estilo.css"></head>
+<body>
+<header><strong>Banco Demo</strong></header>
+<main>
+  <div class="cartao">
+    <h1>Entrar</h1>
+    <form id="form-login">
+      <label for="cpf">CPF</label>
+      <input id="cpf" name="cpf" data-testid="login-cpf" autocomplete="off">
+      <label for="senha">Senha</label>
+      <input id="senha" name="senha" type="password" data-testid="login-senha">
+      <div><button type="submit" data-testid="login-entrar">Entrar</button></div>
+    </form>
+    <div id="mensagem"></div>
+  </div>
+</main>
+<script src="app.js"></script>
+<script>
+  document.querySelector('#form-login').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const msg = document.querySelector('#mensagem');
+    msg.className = 'carregando'; msg.textContent = 'Validando...';
+    const { status, dados } = await api('login', { cpf: cpf.value, senha: senha.value });
+    if (status === 200) {
+      localStorage.setItem('usuario', dados.nome);
+      location.href = 'inicio.html';
+    } else {
+      msg.className = 'msg erro'; msg.setAttribute('data-testid', 'login-erro'); msg.textContent = dados.erro;
+    }
+  });
+</script>
+<div id="aviso-estatico" style="position:fixed;left:12px;bottom:12px;z-index:9;font:13px system-ui,sans-serif;background:#1d233c;color:#fff;padding:8px 12px;border-radius:8px;opacity:.92">
+  Versão publicada: a API roda simulada no navegador. Login: 123.456.789-09 / demo123 ·
+  <a href="#" style="color:#9fd" onclick="localStorage.removeItem('bancoDemo:estado');location.reload();return false">reiniciar dados</a></div>
+</body>
+</html>
