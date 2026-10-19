@@ -2,6 +2,8 @@
 
 Demonstração de como uma IA (Claude Code) pode diagnosticar uma suíte E2E em WebdriverIO v9 e gerar testes novos a partir de casos manuais, sempre com evidência.
 
+**Veja o infográfico pronto:** https://natelson.github.io/wdio-diagnostico-ia/ (gerado a partir de `gabarito/diagnostico.json`; o arquivo está em `docs/index.html`).
+
 Tudo roda localmente, sem rede e sem dados reais. O app testado é o **Banco Demo**, um banco fictício com latência variável de propósito.
 
 ## O que tem aqui
