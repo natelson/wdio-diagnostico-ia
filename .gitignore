@@ -1,0 +1,5 @@
+node_modules/
+*.log
+resultados/
+relatorio/diagnostico.json
+relatorio/diagnostico.html

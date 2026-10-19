@@ -1,0 +1,110 @@
+{
+  "resumo": {
+    "execucoes": 8,
+    "execucoesVerdes": 0,
+    "taxaExecucoesVerdes": 0,
+    "duracaoMediaSegundos": 39.6,
+    "testes": 12,
+    "estaveis": 7,
+    "instaveis": 2,
+    "quebrados": 3
+  },
+  "testes": [
+    {
+      "teste": "Bloqueio de cartao › deve bloquear o cartao",
+      "execucoes": 8,
+      "falhas": 8,
+      "taxaSucesso": 0,
+      "tempoMedioSegundos": 2.1,
+      "situacao": "quebrado"
+    },
+    {
+      "teste": "Bloqueio de cartao › deve exibir o cartao bloqueado",
+      "execucoes": 8,
+      "falhas": 8,
+      "taxaSucesso": 0,
+      "tempoMedioSegundos": 0,
+      "situacao": "quebrado"
+    },
+    {
+      "teste": "Fatura - consulta › deve exibir as parcelas com opcao de antecipar",
+      "execucoes": 8,
+      "falhas": 8,
+      "taxaSucesso": 0,
+      "tempoMedioSegundos": 0,
+      "situacao": "quebrado"
+    },
+    {
+      "teste": "Login › deve exibir erro com senha invalida",
+      "execucoes": 8,
+      "falhas": 4,
+      "taxaSucesso": 0.5,
+      "tempoMedioSegundos": 1.4,
+      "situacao": "instável"
+    },
+    {
+      "teste": "Login › deve exibir erro com cpf vazio",
+      "execucoes": 8,
+      "falhas": 3,
+      "taxaSucesso": 0.63,
+      "tempoMedioSegundos": 1.3,
+      "situacao": "instável"
+    },
+    {
+      "teste": "Bloqueio de cartao › deve exibir o cartao ativo",
+      "execucoes": 8,
+      "falhas": 0,
+      "taxaSucesso": 1,
+      "tempoMedioSegundos": 5.3,
+      "situacao": "estável"
+    },
+    {
+      "teste": "Fatura - consulta › deve exibir a fatura",
+      "execucoes": 8,
+      "falhas": 0,
+      "taxaSucesso": 1,
+      "tempoMedioSegundos": 5.2,
+      "situacao": "estável"
+    },
+    {
+      "teste": "Fatura - antecipacao de parcelas › deve antecipar a parcela do notebook",
+      "execucoes": 8,
+      "falhas": 0,
+      "taxaSucesso": 1,
+      "tempoMedioSegundos": 4.3,
+      "situacao": "estável"
+    },
+    {
+      "teste": "Tela inicial › deve logar",
+      "execucoes": 8,
+      "falhas": 0,
+      "taxaSucesso": 1,
+      "tempoMedioSegundos": 3.2,
+      "situacao": "estável"
+    },
+    {
+      "teste": "Login › deve fazer login com sucesso",
+      "execucoes": 8,
+      "falhas": 0,
+      "taxaSucesso": 1,
+      "tempoMedioSegundos": 3.2,
+      "situacao": "estável"
+    },
+    {
+      "teste": "Tela inicial › deve exibir o total da fatura no resumo",
+      "execucoes": 8,
+      "falhas": 0,
+      "taxaSucesso": 1,
+      "tempoMedioSegundos": 1.6,
+      "situacao": "estável"
+    },
+    {
+      "teste": "Tela inicial › deve exibir o resumo",
+      "execucoes": 8,
+      "falhas": 0,
+      "taxaSucesso": 1,
+      "tempoMedioSegundos": 1.5,
+      "situacao": "estável"
+    }
+  ]
+}

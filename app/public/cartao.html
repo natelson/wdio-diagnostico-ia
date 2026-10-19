@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pt-BR">
+<head><meta charset="utf-8"><title>Banco Demo · Meu cartão</title><link rel="stylesheet" href="/estilo.css"></head>
+<body>
+<header><strong>Banco Demo</strong><nav><span id="saudacao"></span><a href="/inicio.html">Início</a><a href="/fatura.html">Fatura</a></nav></header>
+<main>
+  <div class="cartao">
+    <h1>Meu cartão</h1>
+    <div id="dados-cartao"><p class="carregando">Carregando cartão...</p></div>
+  </div>
+</main>
+<script src="/app.js"></script>
+<script>
+  exigirLogin();
+  async function carregar() {
+    const { dados } = await api('cartao');
+    const situacao = dados.bloqueado ? 'Bloqueado' : 'Ativo';
+    document.querySelector('#dados-cartao').innerHTML = `
+      <p>${dados.bandeira} final ${dados.final}</p>
+      <p>Situação: <strong data-testid="cartao-situacao">${situacao}</strong></p>
+      <p>Limite: ${brl(dados.limite)}</p>
+      ${dados.bloqueado ? '' : '<button class="perigo" data-testid="cartao-bloquear">Bloquear cartão</button>'}
+      <div id="mensagem"></div>`;
+    const botao = document.querySelector('[data-testid=cartao-bloquear]');
+    if (botao) botao.addEventListener('click', bloquear);
+  }
+  async function bloquear() {
+    if (!confirm('Confirma o bloqueio do cartão?')) return;
+    const { dados } = await api('cartao/bloqueio', {});
+    await carregar();
+    const msg = document.querySelector('#mensagem');
+    msg.className = 'msg ok'; msg.setAttribute('data-testid', 'cartao-protocolo');
+    msg.textContent = 'Cartão bloqueado. Protocolo ' + dados.protocolo;
+  }
+  carregar();
+</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="3" failures="0" errors="0" skipped="0">
+  <testsuite name="Tela inicial" timestamp="2026-10-19T12:43:15" time="6.283" tests="3" failures="0" errors="0" skipped="0">
+    <properties>
+      <property name="specId" value="0"/>
+      <property name="suiteName" value="Tela inicial"/>
+      <property name="capabilities" value="chrome.155_0_8059_84.linux"/>
+      <property name="file" value="file://./test/specs/inicio.e2e.js"/>
+    </properties>
+    <testcase classname="chrome.155_0_8059_84.linux.Tela_inicial" name="deve logar" time="3.183">
+      <system-out><![CDATA[
+COMMAND: POST /session/800846085d927061beae3f17865ff18c/element/f.F90044EA77F5384C2196B92480BFBB14.d.E41D3E4CA3FEBB8F120F063BC4D56454.e.3/clear - {}
+RESULT: {}
+COMMAND: POST /session/800846085d927061beae3f17865ff18c/element/f.F90044EA77F5384C2196B92480BFBB14.d.E41D3E4CA3FEBB8F120F063BC4D56454.e.3/value - {"text":"123.456.789-09"}
+RESULT: {"text":"123.456.789-09"}
+COMMAND: POST /session/800846085d927061beae3f17865ff18c/element/f.F90044EA77F5384C2196B92480BFBB14.d.E41D3E4CA3FEBB8F120F063BC4D56454.e.4/clear - {}
+RESULT: {}
+COMMAND: POST /session/800846085d927061beae3f17865ff18c/element/f.F90044EA77F5384C2196B92480BFBB14.d.E41D3E4CA3FEBB8F120F063BC4D56454.e.4/value - {"text":"demo123"}
+RESULT: {"text":"demo123"}
+COMMAND: POST /session/800846085d927061beae3f17865ff18c/element/f.F90044EA77F5384C2196B92480BFBB14.d.E41D3E4CA3FEBB8F120F063BC4D56454.e.5/click - {}
+RESULT: {}
+COMMAND: GET /session/800846085d927061beae3f17865ff18c/url - {}
+RESULT: {}
+]]></system-out>
+    </testcase>
+    <testcase classname="chrome.155_0_8059_84.linux.Tela_inicial" name="deve exibir o resumo" time="1.542"/>
+    <testcase classname="chrome.155_0_8059_84.linux.Tela_inicial" name="deve exibir o total da fatura no resumo" time="1.556">
+      <system-out><![CDATA[
+COMMAND: GET /session/800846085d927061beae3f17865ff18c/element/f.F90044EA77F5384C2196B92480BFBB14.d.32F8F06933D5D4EB055E9936DE562DB8.e.16/text - {}
+RESULT: {}
+COMMAND: DELETE /session/800846085d927061beae3f17865ff18c - {}
+RESULT: {}
+]]></system-out>
+    </testcase>
+  </testsuite>
+</testsuites>

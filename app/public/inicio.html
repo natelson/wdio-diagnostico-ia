@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="pt-BR">
+<head><meta charset="utf-8"><title>Banco Demo · Início</title><link rel="stylesheet" href="/estilo.css"></head>
+<body>
+<header><strong>Banco Demo</strong><nav><span id="saudacao"></span><a href="/cartao.html" data-testid="menu-cartao">Meu cartão</a><a href="/fatura.html" data-testid="menu-fatura">Fatura</a></nav></header>
+<main>
+  <div class="cartao" id="resumo"><p class="carregando">Carregando resumo...</p></div>
+</main>
+<script src="/app.js"></script>
+<script>
+  exigirLogin();
+  (async () => {
+    const [{ dados: c }, { dados: f }] = await Promise.all([api('cartao'), api('fatura')]);
+    document.querySelector('#resumo').innerHTML = `
+      <h2>Resumo</h2>
+      <p>Cartão ${c.bandeira} final <span data-testid="cartao-final">${c.final}</span></p>
+      <p>Fatura ${f.competencia}: <strong data-testid="fatura-total">${brl(f.total)}</strong></p>`;
+  })();
+</script>
+</body>
+</html>

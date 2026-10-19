@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="3" failures="1" errors="0" skipped="0">
+  <testsuite name="Login" timestamp="2026-10-19T12:40:46" time="5.97" tests="3" failures="1" errors="0" skipped="0">
+    <properties>
+      <property name="specId" value="0"/>
+      <property name="suiteName" value="Login"/>
+      <property name="capabilities" value="chrome.155_0_8059_84.linux"/>
+      <property name="file" value="file://./test/specs/login.e2e.js"/>
+    </properties>
+    <testcase classname="chrome.155_0_8059_84.linux.Login" name="deve fazer login com sucesso" time="3.24">
+      <system-out><![CDATA[
+COMMAND: POST /session/753ed51cc1e0ded9a6eaa718863f7ecf/element/f.5A0E7D8130E4AC683DED7CAE9C19897B.d.2BFFEBEE3249E3393CF11EB8718363C9.e.3/clear - {}
+RESULT: {}
+COMMAND: POST /session/753ed51cc1e0ded9a6eaa718863f7ecf/element/f.5A0E7D8130E4AC683DED7CAE9C19897B.d.2BFFEBEE3249E3393CF11EB8718363C9.e.3/value - {"text":"123.456.789-09"}
+RESULT: {"text":"123.456.789-09"}
+COMMAND: POST /session/753ed51cc1e0ded9a6eaa718863f7ecf/element/f.5A0E7D8130E4AC683DED7CAE9C19897B.d.2BFFEBEE3249E3393CF11EB8718363C9.e.4/clear - {}
+RESULT: {}
+COMMAND: POST /session/753ed51cc1e0ded9a6eaa718863f7ecf/element/f.5A0E7D8130E4AC683DED7CAE9C19897B.d.2BFFEBEE3249E3393CF11EB8718363C9.e.4/value - {"text":"demo123"}
+RESULT: {"text":"demo123"}
+COMMAND: POST /session/753ed51cc1e0ded9a6eaa718863f7ecf/element/f.5A0E7D8130E4AC683DED7CAE9C19897B.d.2BFFEBEE3249E3393CF11EB8718363C9.e.5/click - {}
+RESULT: {}
+COMMAND: GET /session/753ed51cc1e0ded9a6eaa718863f7ecf/url - {}
+RESULT: {}
+]]></system-out>
+    </testcase>
+    <testcase classname="chrome.155_0_8059_84.linux.Login" name="deve exibir erro com senha invalida" time="1.376">
+      <system-out><![CDATA[
+COMMAND: POST /session/753ed51cc1e0ded9a6eaa718863f7ecf/element/f.5A0E7D8130E4AC683DED7CAE9C19897B.d.0BEEF46ABA470D213AECE9F8485E57D4.e.14/clear - {}
+RESULT: {}
+COMMAND: POST /session/753ed51cc1e0ded9a6eaa718863f7ecf/element/f.5A0E7D8130E4AC683DED7CAE9C19897B.d.0BEEF46ABA470D213AECE9F8485E57D4.e.14/value - {"text":"123.456.789-09"}
+RESULT: {"text":"123.456.789-09"}
+COMMAND: POST /session/753ed51cc1e0ded9a6eaa718863f7ecf/element/f.5A0E7D8130E4AC683DED7CAE9C19897B.d.0BEEF46ABA470D213AECE9F8485E57D4.e.15/clear - {}
+RESULT: {}
+COMMAND: POST /session/753ed51cc1e0ded9a6eaa718863f7ecf/element/f.5A0E7D8130E4AC683DED7CAE9C19897B.d.0BEEF46ABA470D213AECE9F8485E57D4.e.15/value - {"text":"errada"}
+RESULT: {"text":"errada"}
+COMMAND: POST /session/753ed51cc1e0ded9a6eaa718863f7ecf/element/f.5A0E7D8130E4AC683DED7CAE9C19897B.d.0BEEF46ABA470D213AECE9F8485E57D4.e.16/click - {}
+RESULT: {}
+COMMAND: GET /session/753ed51cc1e0ded9a6eaa718863f7ecf/element/f.5A0E7D8130E4AC683DED7CAE9C19897B.d.0BEEF46ABA470D213AECE9F8485E57D4.e.23/text - {}
+RESULT: {}
+]]></system-out>
+    </testcase>
+    <testcase classname="chrome.155_0_8059_84.linux.Login" name="deve exibir erro com cpf vazio" time="1.349">
+      <failure message="expect(received).toBe(expected) // Object.is equality&#xA;&#xA;Expected: &quot;CPF ou senha inválidos&quot;&#xA;Received: &quot;Validando...&quot;"/>
+      <system-out><![CDATA[
+COMMAND: POST /session/753ed51cc1e0ded9a6eaa718863f7ecf/element/f.5A0E7D8130E4AC683DED7CAE9C19897B.d.C707A64E7CF5085C23863657E267B139.e.26/clear - {}
+RESULT: {}
+COMMAND: POST /session/753ed51cc1e0ded9a6eaa718863f7ecf/element/f.5A0E7D8130E4AC683DED7CAE9C19897B.d.C707A64E7CF5085C23863657E267B139.e.26/value - {"text":"demo123"}
+RESULT: {"text":"demo123"}
+COMMAND: POST /session/753ed51cc1e0ded9a6eaa718863f7ecf/element/f.5A0E7D8130E4AC683DED7CAE9C19897B.d.C707A64E7CF5085C23863657E267B139.e.27/click - {}
+RESULT: {}
+COMMAND: GET /session/753ed51cc1e0ded9a6eaa718863f7ecf/element/f.5A0E7D8130E4AC683DED7CAE9C19897B.d.C707A64E7CF5085C23863657E267B139.e.33/text - {}
+RESULT: {}
+COMMAND: DELETE /session/753ed51cc1e0ded9a6eaa718863f7ecf - {}
+RESULT: {}
+]]></system-out>
+      <system-err><![CDATA[
+Error: expect(received).toBe(expected) // Object.is equality
+
+Expected: "CPF ou senha inválidos"
+Received: "Validando..."
+    at Context.<anonymous> (test/specs/login.e2e.js:27:17)
+]]></system-err>
+    </testcase>
+  </testsuite>
+</testsuites>

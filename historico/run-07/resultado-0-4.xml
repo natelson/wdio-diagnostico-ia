@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="3" failures="2" errors="0" skipped="0">
+  <testsuite name="Login" timestamp="2026-10-19T12:42:45" time="5.848" tests="3" failures="2" errors="0" skipped="0">
+    <properties>
+      <property name="specId" value="0"/>
+      <property name="suiteName" value="Login"/>
+      <property name="capabilities" value="chrome.155_0_8059_84.linux"/>
+      <property name="file" value="file://./test/specs/login.e2e.js"/>
+    </properties>
+    <testcase classname="chrome.155_0_8059_84.linux.Login" name="deve fazer login com sucesso" time="3.178">
+      <system-out><![CDATA[
+COMMAND: POST /session/5d2213cfd3e111a2c57ca6204232e99a/element/f.2A99E257C6A640856ED512F82325F9EF.d.D63213D76D71D1C0EB4426D61399085A.e.3/clear - {}
+RESULT: {}
+COMMAND: POST /session/5d2213cfd3e111a2c57ca6204232e99a/element/f.2A99E257C6A640856ED512F82325F9EF.d.D63213D76D71D1C0EB4426D61399085A.e.3/value - {"text":"123.456.789-09"}
+RESULT: {"text":"123.456.789-09"}
+COMMAND: POST /session/5d2213cfd3e111a2c57ca6204232e99a/element/f.2A99E257C6A640856ED512F82325F9EF.d.D63213D76D71D1C0EB4426D61399085A.e.4/clear - {}
+RESULT: {}
+COMMAND: POST /session/5d2213cfd3e111a2c57ca6204232e99a/element/f.2A99E257C6A640856ED512F82325F9EF.d.D63213D76D71D1C0EB4426D61399085A.e.4/value - {"text":"demo123"}
+RESULT: {"text":"demo123"}
+COMMAND: POST /session/5d2213cfd3e111a2c57ca6204232e99a/element/f.2A99E257C6A640856ED512F82325F9EF.d.D63213D76D71D1C0EB4426D61399085A.e.5/click - {}
+RESULT: {}
+COMMAND: GET /session/5d2213cfd3e111a2c57ca6204232e99a/url - {}
+RESULT: {}
+]]></system-out>
+    </testcase>
+    <testcase classname="chrome.155_0_8059_84.linux.Login" name="deve exibir erro com senha invalida" time="1.363">
+      <failure message="expect(received).toBe(expected) // Object.is equality&#xA;&#xA;Expected: &quot;CPF ou senha inválidos&quot;&#xA;Received: &quot;Validando...&quot;"/>
+      <system-out><![CDATA[
+COMMAND: POST /session/5d2213cfd3e111a2c57ca6204232e99a/element/f.2A99E257C6A640856ED512F82325F9EF.d.A9B66E5A54B8D755354016898E6AAE68.e.14/clear - {}
+RESULT: {}
+COMMAND: POST /session/5d2213cfd3e111a2c57ca6204232e99a/element/f.2A99E257C6A640856ED512F82325F9EF.d.A9B66E5A54B8D755354016898E6AAE68.e.14/value - {"text":"123.456.789-09"}
+RESULT: {"text":"123.456.789-09"}
+COMMAND: POST /session/5d2213cfd3e111a2c57ca6204232e99a/element/f.2A99E257C6A640856ED512F82325F9EF.d.A9B66E5A54B8D755354016898E6AAE68.e.15/clear - {}
+RESULT: {}
+COMMAND: POST /session/5d2213cfd3e111a2c57ca6204232e99a/element/f.2A99E257C6A640856ED512F82325F9EF.d.A9B66E5A54B8D755354016898E6AAE68.e.15/value - {"text":"errada"}
+RESULT: {"text":"errada"}
+COMMAND: POST /session/5d2213cfd3e111a2c57ca6204232e99a/element/f.2A99E257C6A640856ED512F82325F9EF.d.A9B66E5A54B8D755354016898E6AAE68.e.16/click - {}
+RESULT: {}
+COMMAND: GET /session/5d2213cfd3e111a2c57ca6204232e99a/element/f.2A99E257C6A640856ED512F82325F9EF.d.A9B66E5A54B8D755354016898E6AAE68.e.23/text - {}
+RESULT: {}
+]]></system-out>
+      <system-err><![CDATA[
+Error: expect(received).toBe(expected) // Object.is equality
+
+Expected: "CPF ou senha inválidos"
+Received: "Validando..."
+    at Context.<anonymous> (test/specs/login.e2e.js:18:17)
+]]></system-err>
+    </testcase>
+    <testcase classname="chrome.155_0_8059_84.linux.Login" name="deve exibir erro com cpf vazio" time="1.305">
+      <failure message="expect(received).toBe(expected) // Object.is equality&#xA;&#xA;Expected: &quot;CPF ou senha inválidos&quot;&#xA;Received: &quot;Validando...&quot;"/>
+      <system-out><![CDATA[
+COMMAND: POST /session/5d2213cfd3e111a2c57ca6204232e99a/element/f.2A99E257C6A640856ED512F82325F9EF.d.202BD31696F1276F0FABDC49A3B3AFBA.e.26/clear - {}
+RESULT: {}
+COMMAND: POST /session/5d2213cfd3e111a2c57ca6204232e99a/element/f.2A99E257C6A640856ED512F82325F9EF.d.202BD31696F1276F0FABDC49A3B3AFBA.e.26/value - {"text":"demo123"}
+RESULT: {"text":"demo123"}
+COMMAND: POST /session/5d2213cfd3e111a2c57ca6204232e99a/element/f.2A99E257C6A640856ED512F82325F9EF.d.202BD31696F1276F0FABDC49A3B3AFBA.e.27/click - {}
+RESULT: {}
+COMMAND: GET /session/5d2213cfd3e111a2c57ca6204232e99a/element/f.2A99E257C6A640856ED512F82325F9EF.d.202BD31696F1276F0FABDC49A3B3AFBA.e.33/text - {}
+RESULT: {}
+COMMAND: DELETE /session/5d2213cfd3e111a2c57ca6204232e99a - {}
+RESULT: {}
+]]></system-out>
+      <system-err><![CDATA[
+Error: expect(received).toBe(expected) // Object.is equality
+
+Expected: "CPF ou senha inválidos"
+Received: "Validando..."
+    at Context.<anonymous> (test/specs/login.e2e.js:27:17)
+]]></system-err>
+    </testcase>
+  </testsuite>
+</testsuites>

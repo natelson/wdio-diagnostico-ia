@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="3" failures="1" errors="0" skipped="0">
+  <testsuite name="Login" timestamp="2026-10-19T12:43:23" time="5.839" tests="3" failures="1" errors="0" skipped="0">
+    <properties>
+      <property name="specId" value="0"/>
+      <property name="suiteName" value="Login"/>
+      <property name="capabilities" value="chrome.155_0_8059_84.linux"/>
+      <property name="file" value="file://./test/specs/login.e2e.js"/>
+    </properties>
+    <testcase classname="chrome.155_0_8059_84.linux.Login" name="deve fazer login com sucesso" time="3.177">
+      <system-out><![CDATA[
+COMMAND: POST /session/6335bfe03468f2fc08d8629445ffcbf7/element/f.B837E4197F9D275E163C9437357DFBF7.d.11A6748BAE34E1DF958B8C1880D351F8.e.3/clear - {}
+RESULT: {}
+COMMAND: POST /session/6335bfe03468f2fc08d8629445ffcbf7/element/f.B837E4197F9D275E163C9437357DFBF7.d.11A6748BAE34E1DF958B8C1880D351F8.e.3/value - {"text":"123.456.789-09"}
+RESULT: {"text":"123.456.789-09"}
+COMMAND: POST /session/6335bfe03468f2fc08d8629445ffcbf7/element/f.B837E4197F9D275E163C9437357DFBF7.d.11A6748BAE34E1DF958B8C1880D351F8.e.4/clear - {}
+RESULT: {}
+COMMAND: POST /session/6335bfe03468f2fc08d8629445ffcbf7/element/f.B837E4197F9D275E163C9437357DFBF7.d.11A6748BAE34E1DF958B8C1880D351F8.e.4/value - {"text":"demo123"}
+RESULT: {"text":"demo123"}
+COMMAND: POST /session/6335bfe03468f2fc08d8629445ffcbf7/element/f.B837E4197F9D275E163C9437357DFBF7.d.11A6748BAE34E1DF958B8C1880D351F8.e.5/click - {}
+RESULT: {}
+COMMAND: GET /session/6335bfe03468f2fc08d8629445ffcbf7/url - {}
+RESULT: {}
+]]></system-out>
+    </testcase>
+    <testcase classname="chrome.155_0_8059_84.linux.Login" name="deve exibir erro com senha invalida" time="1.365">
+      <failure message="expect(received).toBe(expected) // Object.is equality&#xA;&#xA;Expected: &quot;CPF ou senha inválidos&quot;&#xA;Received: &quot;Validando...&quot;"/>
+      <system-out><![CDATA[
+COMMAND: POST /session/6335bfe03468f2fc08d8629445ffcbf7/element/f.B837E4197F9D275E163C9437357DFBF7.d.26598DDF15864DE9D515EAD0E6C73228.e.14/clear - {}
+RESULT: {}
+COMMAND: POST /session/6335bfe03468f2fc08d8629445ffcbf7/element/f.B837E4197F9D275E163C9437357DFBF7.d.26598DDF15864DE9D515EAD0E6C73228.e.14/value - {"text":"123.456.789-09"}
+RESULT: {"text":"123.456.789-09"}
+COMMAND: POST /session/6335bfe03468f2fc08d8629445ffcbf7/element/f.B837E4197F9D275E163C9437357DFBF7.d.26598DDF15864DE9D515EAD0E6C73228.e.15/clear - {}
+RESULT: {}
+COMMAND: POST /session/6335bfe03468f2fc08d8629445ffcbf7/element/f.B837E4197F9D275E163C9437357DFBF7.d.26598DDF15864DE9D515EAD0E6C73228.e.15/value - {"text":"errada"}
+RESULT: {"text":"errada"}
+COMMAND: POST /session/6335bfe03468f2fc08d8629445ffcbf7/element/f.B837E4197F9D275E163C9437357DFBF7.d.26598DDF15864DE9D515EAD0E6C73228.e.16/click - {}
+RESULT: {}
+COMMAND: GET /session/6335bfe03468f2fc08d8629445ffcbf7/element/f.B837E4197F9D275E163C9437357DFBF7.d.26598DDF15864DE9D515EAD0E6C73228.e.23/text - {}
+RESULT: {}
+]]></system-out>
+      <system-err><![CDATA[
+Error: expect(received).toBe(expected) // Object.is equality
+
+Expected: "CPF ou senha inválidos"
+Received: "Validando..."
+    at Context.<anonymous> (test/specs/login.e2e.js:18:17)
+]]></system-err>
+    </testcase>
+    <testcase classname="chrome.155_0_8059_84.linux.Login" name="deve exibir erro com cpf vazio" time="1.296">
+      <system-out><![CDATA[
+COMMAND: POST /session/6335bfe03468f2fc08d8629445ffcbf7/element/f.B837E4197F9D275E163C9437357DFBF7.d.0D9F7F69C407EE41A3945CAA98D06D0A.e.26/clear - {}
+RESULT: {}
+COMMAND: POST /session/6335bfe03468f2fc08d8629445ffcbf7/element/f.B837E4197F9D275E163C9437357DFBF7.d.0D9F7F69C407EE41A3945CAA98D06D0A.e.26/value - {"text":"demo123"}
+RESULT: {"text":"demo123"}
+COMMAND: POST /session/6335bfe03468f2fc08d8629445ffcbf7/element/f.B837E4197F9D275E163C9437357DFBF7.d.0D9F7F69C407EE41A3945CAA98D06D0A.e.27/click - {}
+RESULT: {}
+COMMAND: GET /session/6335bfe03468f2fc08d8629445ffcbf7/element/f.B837E4197F9D275E163C9437357DFBF7.d.0D9F7F69C407EE41A3945CAA98D06D0A.e.33/text - {}
+RESULT: {}
+COMMAND: DELETE /session/6335bfe03468f2fc08d8629445ffcbf7 - {}
+RESULT: {}
+]]></system-out>
+    </testcase>
+  </testsuite>
+</testsuites>

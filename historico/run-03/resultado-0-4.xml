@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="3" failures="0" errors="0" skipped="0">
+  <testsuite name="Login" timestamp="2026-10-19T12:40:07" time="5.958" tests="3" failures="0" errors="0" skipped="0">
+    <properties>
+      <property name="specId" value="0"/>
+      <property name="suiteName" value="Login"/>
+      <property name="capabilities" value="chrome.155_0_8059_84.linux"/>
+      <property name="file" value="file://./test/specs/login.e2e.js"/>
+    </properties>
+    <testcase classname="chrome.155_0_8059_84.linux.Login" name="deve fazer login com sucesso" time="3.21">
+      <system-out><![CDATA[
+COMMAND: POST /session/d061b14cce87a33f380b08a765b1686a/element/f.D9C4563A5C941EC4930ED9A91363E961.d.40C649F053B3890709791F79CAD194D8.e.3/clear - {}
+RESULT: {}
+COMMAND: POST /session/d061b14cce87a33f380b08a765b1686a/element/f.D9C4563A5C941EC4930ED9A91363E961.d.40C649F053B3890709791F79CAD194D8.e.3/value - {"text":"123.456.789-09"}
+RESULT: {"text":"123.456.789-09"}
+COMMAND: POST /session/d061b14cce87a33f380b08a765b1686a/element/f.D9C4563A5C941EC4930ED9A91363E961.d.40C649F053B3890709791F79CAD194D8.e.4/clear - {}
+RESULT: {}
+COMMAND: POST /session/d061b14cce87a33f380b08a765b1686a/element/f.D9C4563A5C941EC4930ED9A91363E961.d.40C649F053B3890709791F79CAD194D8.e.4/value - {"text":"demo123"}
+RESULT: {"text":"demo123"}
+COMMAND: POST /session/d061b14cce87a33f380b08a765b1686a/element/f.D9C4563A5C941EC4930ED9A91363E961.d.40C649F053B3890709791F79CAD194D8.e.5/click - {}
+RESULT: {}
+COMMAND: GET /session/d061b14cce87a33f380b08a765b1686a/url - {}
+RESULT: {}
+]]></system-out>
+    </testcase>
+    <testcase classname="chrome.155_0_8059_84.linux.Login" name="deve exibir erro com senha invalida" time="1.445">
+      <system-out><![CDATA[
+COMMAND: POST /session/d061b14cce87a33f380b08a765b1686a/element/f.D9C4563A5C941EC4930ED9A91363E961.d.777631EB223F075182EAA54DAE4A27F3.e.14/clear - {}
+RESULT: {}
+COMMAND: POST /session/d061b14cce87a33f380b08a765b1686a/element/f.D9C4563A5C941EC4930ED9A91363E961.d.777631EB223F075182EAA54DAE4A27F3.e.14/value - {"text":"123.456.789-09"}
+RESULT: {"text":"123.456.789-09"}
+COMMAND: POST /session/d061b14cce87a33f380b08a765b1686a/element/f.D9C4563A5C941EC4930ED9A91363E961.d.777631EB223F075182EAA54DAE4A27F3.e.15/clear - {}
+RESULT: {}
+COMMAND: POST /session/d061b14cce87a33f380b08a765b1686a/element/f.D9C4563A5C941EC4930ED9A91363E961.d.777631EB223F075182EAA54DAE4A27F3.e.15/value - {"text":"errada"}
+RESULT: {"text":"errada"}
+COMMAND: POST /session/d061b14cce87a33f380b08a765b1686a/element/f.D9C4563A5C941EC4930ED9A91363E961.d.777631EB223F075182EAA54DAE4A27F3.e.16/click - {}
+RESULT: {}
+COMMAND: GET /session/d061b14cce87a33f380b08a765b1686a/element/f.D9C4563A5C941EC4930ED9A91363E961.d.777631EB223F075182EAA54DAE4A27F3.e.23/text - {}
+RESULT: {}
+]]></system-out>
+    </testcase>
+    <testcase classname="chrome.155_0_8059_84.linux.Login" name="deve exibir erro com cpf vazio" time="1.3">
+      <system-out><![CDATA[
+COMMAND: POST /session/d061b14cce87a33f380b08a765b1686a/element/f.D9C4563A5C941EC4930ED9A91363E961.d.5812D7342EE39EFB6CF99AC9A36076B0.e.26/clear - {}
+RESULT: {}
+COMMAND: POST /session/d061b14cce87a33f380b08a765b1686a/element/f.D9C4563A5C941EC4930ED9A91363E961.d.5812D7342EE39EFB6CF99AC9A36076B0.e.26/value - {"text":"demo123"}
+RESULT: {"text":"demo123"}
+COMMAND: POST /session/d061b14cce87a33f380b08a765b1686a/element/f.D9C4563A5C941EC4930ED9A91363E961.d.5812D7342EE39EFB6CF99AC9A36076B0.e.27/click - {}
+RESULT: {}
+COMMAND: GET /session/d061b14cce87a33f380b08a765b1686a/element/f.D9C4563A5C941EC4930ED9A91363E961.d.5812D7342EE39EFB6CF99AC9A36076B0.e.33/text - {}
+RESULT: {}
+COMMAND: DELETE /session/d061b14cce87a33f380b08a765b1686a - {}
+RESULT: {}
+]]></system-out>
+    </testcase>
+  </testsuite>
+</testsuites>

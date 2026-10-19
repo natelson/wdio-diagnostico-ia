@@ -1,0 +1,103 @@
+{
+  "resumoExecutivo": "A suíte não ficou verde em nenhuma das 8 execuções sem retry. Três testes estão quebrados de forma permanente e dois são instáveis; o retries: 2 da configuração mascara parte disso no pipeline. Mais da metade do tempo de cada execução é espera fixa (browser.pause). A causa raiz se repete: esperas fixas, estado compartilhado entre testes e seletores presos ao layout. O padrão certo já existe no repositório (page objects com data-testid), mas só 1 dos 5 specs o usa.",
+  "destaques": [
+    { "rotulo": "Tempo em pausa fixa por execução", "valor": "~22 s de 39,6 s", "detalhe": "55% da duração média da execução; 25,9 s escritos, dos quais 4 s não rodam porque o teste quebra antes.", "tipo": "fato", "evidencia": "grep browser.pause test/specs/ · historico/metricas.json" },
+    { "rotulo": "Seletores frágeis", "valor": "10 XPath + 2 nth-child", "detalhe": "O app já expõe data-testid para todos esses elementos.", "tipo": "fato", "evidencia": "grep \"'/html\" e nth-child em test/specs/" },
+    { "rotulo": "Specs no padrão page object", "valor": "1 de 5", "detalhe": "Só fatura-antecipacao usa LoginPage e FaturaPage.", "tipo": "fato", "evidencia": "test/specs/fatura-antecipacao.e2e.js:1-2" }
+  ],
+  "dimensoes": [
+    {
+      "nome": "Arquitetura da suíte", "status": "amarelo",
+      "justificativa": "O padrão existe em test/pageobjects/, mas 4 de 5 specs o ignoram.",
+      "achados": [
+        { "tipo": "fato", "texto": "Só um spec importa page objects; os outros quatro usam $() direto com seletores inline.", "evidencia": "test/specs/fatura-antecipacao.e2e.js:1-2" },
+        { "tipo": "fato", "texto": "Não há page objects para as telas de início e de cartão.", "evidencia": "test/pageobjects/ (só fatura.page.js e login.page.js)" }
+      ]
+    },
+    {
+      "nome": "Estabilidade", "status": "vermelho",
+      "justificativa": "0/8 execuções verdes; 3 quebrados e 2 instáveis escondidos por retries: 2.",
+      "achados": [
+        { "tipo": "fato", "texto": "Login › deve exibir erro com senha invalida falhou em 4 de 8 e … com cpf vazio em 3 de 8, sempre recebendo \"Validando...\": a pausa de 1,2 s é menor que a latência máxima da API (1,6 s).", "evidencia": "test/specs/login.e2e.js:16 e :25 · app/server.cjs:10-11" },
+        { "tipo": "fato", "texto": "Bloqueio de cartao › deve bloquear o cartao falhou em 8 de 8 com \"no such alert\": no WebdriverIO v9, sem listener do evento dialog, o confirm() é dispensado via WebDriver BiDi e o bloqueio nunca acontece.", "evidencia": "test/specs/cartao-bloqueio.e2e.js:16 · app/public/cartao.html:28" },
+        { "tipo": "inferencia", "texto": "Com 50% de falha por tentativa, 2 retries reduzem a falha visível para ~12,5% (0,5³): o problema continua lá, só fica mais caro de ver.", "evidencia": "wdio.conf.js:29-30 · historico/metricas.json" }
+      ]
+    },
+    {
+      "nome": "Velocidade", "status": "vermelho",
+      "justificativa": "~22 s de pausa fixa por execução e execução serial (maxInstances: 1).",
+      "achados": [
+        { "tipo": "fato", "texto": "12 chamadas de browser.pause, de 500 ms a 4.000 ms; a pausa de 3 s após o login se repete em 4 arquivos.", "evidencia": "cartao-bloqueio.e2e.js:7,9,15,17 · login.e2e.js:7,16,25 · inicio.e2e.js:7,12,18 · fatura-consulta.e2e.js:7,9" },
+        { "tipo": "fato", "texto": "maxInstances: 1 faz os 5 specs rodarem em série.", "evidencia": "wdio.conf.js:7" },
+        { "tipo": "inferencia", "texto": "Trocando pausas por esperas explícitas (latência média da API ≈ 0,9 s), a execução cai para ~20 s; com paralelismo, abaixo de 15 s.", "evidencia": "app/server.cjs:10-11,27 · historico/execucoes.json" }
+      ]
+    },
+    {
+      "nome": "Dados e ambientes", "status": "vermelho",
+      "justificativa": "Estado compartilhado entre specs, sem reset, causa falha permanente.",
+      "achados": [
+        { "tipo": "fato", "texto": "Fatura - consulta › deve exibir as parcelas com opcao de antecipar falhou em 8 de 8: fatura-antecipacao roda antes (ordem alfabética) e antecipa a 1ª parcela, cujo botão some. Nenhum spec chama POST /api/reset.", "evidencia": "test/specs/fatura-consulta.e2e.js:14 · test/specs/fatura-antecipacao.e2e.js:12" },
+        { "tipo": "fato", "texto": "cartao-bloqueio encadeia 3 testes: o 3º depende do 2º e falha em 8 de 8 em cascata.", "evidencia": "test/specs/cartao-bloqueio.e2e.js:21-23" }
+      ]
+    },
+    {
+      "nome": "Cobertura de valor", "status": "amarelo",
+      "justificativa": "Fluxos críticos presentes, mas há teste duplicado, asserção vazia e o CT-014 não está automatizado.",
+      "achados": [
+        { "tipo": "fato", "texto": "inicio › deve exibir o resumo só verifica se o body está visível: passa mesmo com a tela quebrada.", "evidencia": "test/specs/inicio.e2e.js:13" },
+        { "tipo": "fato", "texto": "inicio › deve logar duplica login › deve fazer login com sucesso linha a linha.", "evidencia": "test/specs/inicio.e2e.js:2-9 · test/specs/login.e2e.js:2-9" },
+        { "tipo": "fato", "texto": "O CT-014 (antecipar parcela, criticidade alta) não tem teste automatizado; o teste de antecipação existente não valida desconto nem protocolo.", "evidencia": "casos-manuais/CT-014-antecipar-parcela.md · test/specs/fatura-antecipacao.e2e.js:13-14" }
+      ]
+    },
+    {
+      "nome": "Manutenibilidade", "status": "vermelho",
+      "justificativa": "10 XPaths absolutos, 2 nth-child e login copiado em 4 arquivos.",
+      "achados": [
+        { "tipo": "fato", "texto": "10 seletores XPath absolutos (o do botão de login aparece em 4 arquivos) e 2 com nth-child; o app já expõe data-testid nesses elementos.", "evidencia": "cartao-bloqueio.e2e.js:6,10,22 · fatura-consulta.e2e.js:6,10,14,15 · inicio.e2e.js:6,19 · login.e2e.js:6,15,24" },
+        { "tipo": "fato", "texto": "O login (CPF, senha, clique, pausa) está copiado em login, inicio, cartao-bloqueio e fatura-consulta, apesar de existir LoginPage.entrarCom().", "evidencia": "test/pageobjects/login.page.js:11" }
+      ]
+    },
+    {
+      "nome": "Diagnóstico de falhas", "status": "amarelo",
+      "justificativa": "Mensagens claras no JUnit, mas sem screenshot nem evidência de tela.",
+      "achados": [
+        { "tipo": "fato", "texto": "O JUnit registra mensagem e comandos WebDriver, mas não há screenshot nem HTML da tela na falha (nenhum hook afterTest).", "evidencia": "wdio.conf.js:22-25" },
+        { "tipo": "fato", "texto": "Os specs legados usam expect(await el.getText()).toBe(...): a asserção não espera o elemento e a mensagem não diz qual seletor falhou.", "evidencia": "test/specs/login.e2e.js:18" }
+      ]
+    },
+    {
+      "nome": "Uso de IA", "status": "amarelo",
+      "justificativa": "Instruções versionadas (CLAUDE.md, .claude/commands/), sem guardrail automático nem métrica de ganho.",
+      "achados": [
+        { "tipo": "fato", "texto": "Há CLAUDE.md e AGENTS.md com regras de evidência e de padrão de teste, e comandos versionados para diagnóstico e geração de testes.", "evidencia": "CLAUDE.md · .claude/commands/" },
+        { "tipo": "inferencia", "texto": "Falta um guardrail automático (lint contra browser.pause e XPath, gate de N execuções sem retry no CI): hoje a regra existe só em texto.", "evidencia": "package.json (sem lint) · wdio.conf.js" }
+      ]
+    }
+  ],
+  "oportunidades": [
+    { "titulo": "Trocar browser.pause por esperas explícitas", "impacto": "alto", "esforco": "baixo", "metrica": "duração média e % de execuções verdes", "ganho": "−17 s por execução e fim dos 2 instáveis", "conta": "~22 s de pausa executada por rodada viram ~3-5 s de espera real (latência média da API ≈ 0,9 s); os 2 instáveis são causados por pausa curta." },
+    { "titulo": "Isolar estado: POST /api/reset no before e testes independentes", "impacto": "alto", "esforco": "baixo", "metrica": "testes quebrados", "ganho": "3 → 2 quebrados", "conta": "Remove a causa única de fatura-consulta › parcelas (8/8 falhas)." },
+    { "titulo": "Tratar o diálogo do WebdriverIO v9 (browser.on('dialog'))", "impacto": "alto", "esforco": "baixo", "metrica": "testes quebrados", "ganho": "2 → 0 quebrados", "conta": "Corrige deve bloquear o cartao e, em cascata, deve exibir o cartao bloqueado (8/8 falhas cada)." },
+    { "titulo": "Migrar os 4 specs para page objects com data-testid", "impacto": "medio", "esforco": "medio", "metrica": "seletores frágeis", "ganho": "12 → 0 seletores frágeis", "conta": "10 XPath + 2 nth-child contados em test/specs/." },
+    { "titulo": "Medir sem retry no pipeline e paralelizar", "impacto": "medio", "esforco": "baixo", "metrica": "duração e visibilidade da instabilidade", "ganho": "suíte < 15 s e instabilidade visível", "conta": "Com o estado isolado, 5 specs em paralelo dividem os ~20 s por até 5 (Inferência, a confirmar na POC)." }
+  ],
+  "poc": {
+    "escopo": "Aplicar as oportunidades 1, 2, 3 e 5 nos 5 specs, migrar o login para LoginPage e automatizar o CT-014 no padrão novo, como prova de velocidade de criação.",
+    "dias": [
+      { "foco": "Reset de estado e independência entre testes e specs." },
+      { "foco": "Diálogo do v9 e troca de todas as pausas por esperas explícitas." },
+      { "foco": "LoginPage em todos os specs e CT-014 automatizado com IA." },
+      { "foco": "Medir com npm run historico -- 8 e apresentar antes × depois." }
+    ],
+    "criterios": [
+      { "metrica": "Execuções verdes sem retry", "atual": "0/8", "meta": "8/8" },
+      { "metrica": "Duração média da suíte", "atual": "39,6 s", "meta": "< 20 s" },
+      { "metrica": "browser.pause na suíte", "atual": "12", "meta": "0" },
+      { "metrica": "CT-014 automatizado", "atual": "manual", "meta": "estável em 3 execuções" }
+    ],
+    "riscos": [
+      "A latência do ambiente real pode ser maior que a do Banco Demo: ajustar os timeouts com base no histórico.",
+      "Mudanças de comportamento (como o diálogo do v9) podem esconder outros testes que passam sem testar nada: revisar as asserções junto com a migração."
+    ]
+  }
+}

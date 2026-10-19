@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="3" failures="0" errors="0" skipped="0">
+  <testsuite name="Tela inicial" timestamp="2026-10-19T12:41:16" time="6.275" tests="3" failures="0" errors="0" skipped="0">
+    <properties>
+      <property name="specId" value="0"/>
+      <property name="suiteName" value="Tela inicial"/>
+      <property name="capabilities" value="chrome.155_0_8059_84.linux"/>
+      <property name="file" value="file://./test/specs/inicio.e2e.js"/>
+    </properties>
+    <testcase classname="chrome.155_0_8059_84.linux.Tela_inicial" name="deve logar" time="3.188">
+      <system-out><![CDATA[
+COMMAND: POST /session/2717f4f4bb13619be1ee9356aafec323/element/f.16EE53D9BDC9473C38A46ECD567A4842.d.EC03C9622E758F332DE0E4E546E94FE8.e.2/clear - {}
+RESULT: {}
+COMMAND: POST /session/2717f4f4bb13619be1ee9356aafec323/element/f.16EE53D9BDC9473C38A46ECD567A4842.d.EC03C9622E758F332DE0E4E546E94FE8.e.2/value - {"text":"123.456.789-09"}
+RESULT: {"text":"123.456.789-09"}
+COMMAND: POST /session/2717f4f4bb13619be1ee9356aafec323/element/f.16EE53D9BDC9473C38A46ECD567A4842.d.EC03C9622E758F332DE0E4E546E94FE8.e.3/clear - {}
+RESULT: {}
+COMMAND: POST /session/2717f4f4bb13619be1ee9356aafec323/element/f.16EE53D9BDC9473C38A46ECD567A4842.d.EC03C9622E758F332DE0E4E546E94FE8.e.3/value - {"text":"demo123"}
+RESULT: {"text":"demo123"}
+COMMAND: POST /session/2717f4f4bb13619be1ee9356aafec323/element/f.16EE53D9BDC9473C38A46ECD567A4842.d.EC03C9622E758F332DE0E4E546E94FE8.e.4/click - {}
+RESULT: {}
+COMMAND: GET /session/2717f4f4bb13619be1ee9356aafec323/url - {}
+RESULT: {}
+]]></system-out>
+    </testcase>
+    <testcase classname="chrome.155_0_8059_84.linux.Tela_inicial" name="deve exibir o resumo" time="1.529"/>
+    <testcase classname="chrome.155_0_8059_84.linux.Tela_inicial" name="deve exibir o total da fatura no resumo" time="1.555">
+      <system-out><![CDATA[
+COMMAND: GET /session/2717f4f4bb13619be1ee9356aafec323/element/f.16EE53D9BDC9473C38A46ECD567A4842.d.35505D7C73083BA205FD0B1433CA2481.e.16/text - {}
+RESULT: {}
+COMMAND: DELETE /session/2717f4f4bb13619be1ee9356aafec323 - {}
+RESULT: {}
+]]></system-out>
+    </testcase>
+  </testsuite>
+</testsuites>

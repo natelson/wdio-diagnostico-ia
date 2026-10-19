@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="3" failures="2" errors="0" skipped="0">
+  <testsuite name="Bloqueio de cartao" timestamp="2026-10-19T12:42:12" time="7.341" tests="3" failures="2" errors="0" skipped="0">
+    <properties>
+      <property name="specId" value="0"/>
+      <property name="suiteName" value="Bloqueio de cartao"/>
+      <property name="capabilities" value="chrome.155_0_8059_84.linux"/>
+      <property name="file" value="file://./test/specs/cartao-bloqueio.e2e.js"/>
+    </properties>
+    <testcase classname="chrome.155_0_8059_84.linux.Bloqueio_de_cartao" name="deve exibir o cartao ativo" time="5.227">
+      <system-out><![CDATA[
+COMMAND: POST /session/75e49dd84d7357ee2c794a4fbb59dc19/element/f.6500E875BFED9E9B7C9BD06709A3A2C6.d.127710D319A705C857B3D5B8A3C2480C.e.2/clear - {}
+RESULT: {}
+COMMAND: POST /session/75e49dd84d7357ee2c794a4fbb59dc19/element/f.6500E875BFED9E9B7C9BD06709A3A2C6.d.127710D319A705C857B3D5B8A3C2480C.e.2/value - {"text":"123.456.789-09"}
+RESULT: {"text":"123.456.789-09"}
+COMMAND: POST /session/75e49dd84d7357ee2c794a4fbb59dc19/element/f.6500E875BFED9E9B7C9BD06709A3A2C6.d.127710D319A705C857B3D5B8A3C2480C.e.3/clear - {}
+RESULT: {}
+COMMAND: POST /session/75e49dd84d7357ee2c794a4fbb59dc19/element/f.6500E875BFED9E9B7C9BD06709A3A2C6.d.127710D319A705C857B3D5B8A3C2480C.e.3/value - {"text":"demo123"}
+RESULT: {"text":"demo123"}
+COMMAND: POST /session/75e49dd84d7357ee2c794a4fbb59dc19/element/f.6500E875BFED9E9B7C9BD06709A3A2C6.d.127710D319A705C857B3D5B8A3C2480C.e.4/click - {}
+RESULT: {}
+COMMAND: GET /session/75e49dd84d7357ee2c794a4fbb59dc19/element/f.6500E875BFED9E9B7C9BD06709A3A2C6.d.EE8259DDFC7527A7193CDC90EAB40E80.e.16/text - {}
+RESULT: {}
+]]></system-out>
+    </testcase>
+    <testcase classname="chrome.155_0_8059_84.linux.Bloqueio_de_cartao" name="deve bloquear o cartao" time="2.1">
+      <failure message="WebDriverError: no such alert&#xA;  (Session info: chrome=155.0.8059.84) when running &quot;alert/accept&quot; with method &quot;POST&quot;"/>
+      <system-out><![CDATA[
+COMMAND: POST /session/75e49dd84d7357ee2c794a4fbb59dc19/element/f.6500E875BFED9E9B7C9BD06709A3A2C6.d.EE8259DDFC7527A7193CDC90EAB40E80.e.17/click - {}
+RESULT: {}
+COMMAND: POST /session/75e49dd84d7357ee2c794a4fbb59dc19/alert/accept - {}
+RESULT: {}
+]]></system-out>
+      <system-err><![CDATA[
+no such alert: WebDriverError: no such alert
+  (Session info: chrome=155.0.8059.84) when running "alert/accept" with method "POST"
+    at async Context.<anonymous> (test/specs/cartao-bloqueio.e2e.js:16:5)
+]]></system-err>
+    </testcase>
+    <testcase classname="chrome.155_0_8059_84.linux.Bloqueio_de_cartao" name="deve exibir o cartao bloqueado" time="0.013">
+      <failure message="expect(received).toBe(expected) // Object.is equality&#xA;&#xA;Expected: &quot;Bloqueado&quot;&#xA;Received: &quot;Ativo&quot;"/>
+      <system-out><![CDATA[
+COMMAND: GET /session/75e49dd84d7357ee2c794a4fbb59dc19/element/f.6500E875BFED9E9B7C9BD06709A3A2C6.d.EE8259DDFC7527A7193CDC90EAB40E80.e.16/text - {}
+RESULT: {}
+COMMAND: DELETE /session/75e49dd84d7357ee2c794a4fbb59dc19 - {}
+RESULT: {}
+]]></system-out>
+      <system-err><![CDATA[
+Error: expect(received).toBe(expected) // Object.is equality
+
+Expected: "Bloqueado"
+Received: "Ativo"
+    at Context.<anonymous> (test/specs/cartao-bloqueio.e2e.js:22:70)
+]]></system-err>
+    </testcase>
+  </testsuite>
+</testsuites>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="1" failures="0" errors="0" skipped="0">
+  <testsuite name="Fatura antecipacao de parcelas" timestamp="2026-10-19T12:41:41" time="5.588" tests="1" failures="0" errors="0" skipped="0">
+    <properties>
+      <property name="specId" value="0"/>
+      <property name="suiteName" value="Fatura - antecipacao de parcelas"/>
+      <property name="capabilities" value="chrome.155_0_8059_84.linux"/>
+      <property name="file" value="file://./test/specs/fatura-antecipacao.e2e.js"/>
+    </properties>
+    <testcase classname="chrome.155_0_8059_84.linux.Fatura_-_antecipacao_de_parcelas" name="deve antecipar a parcela do notebook" time="4.42">
+      <system-out><![CDATA[
+COMMAND: POST /session/56f5ad407c2b9bae01dc7f528ec5f4d4/element/f.9C66B322BBE2267193AE5C4CE2034144.d.80D434EF0AF6E3C9FEA8DBC0AC0DA0C4.e.16/click - {}
+RESULT: {}
+COMMAND: GET /session/56f5ad407c2b9bae01dc7f528ec5f4d4/element/f.9C66B322BBE2267193AE5C4CE2034144.d.80D434EF0AF6E3C9FEA8DBC0AC0DA0C4.e.18/text - {}
+RESULT: {}
+COMMAND: GET /session/56f5ad407c2b9bae01dc7f528ec5f4d4/element/f.9C66B322BBE2267193AE5C4CE2034144.d.80D434EF0AF6E3C9FEA8DBC0AC0DA0C4.e.19/text - {}
+RESULT: {}
+COMMAND: DELETE /session/56f5ad407c2b9bae01dc7f528ec5f4d4 - {}
+RESULT: {}
+]]></system-out>
+    </testcase>
+  </testsuite>
+</testsuites>

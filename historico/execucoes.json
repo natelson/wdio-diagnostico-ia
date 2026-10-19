@@ -1,0 +1,50 @@
+[
+  {
+    "execucao": 1,
+    "inicio": "2026-10-19T15:38:07.440Z",
+    "duracaoSegundos": 40.358,
+    "sucesso": false
+  },
+  {
+    "execucao": 2,
+    "inicio": "2026-10-19T15:38:48.602Z",
+    "duracaoSegundos": 41.02,
+    "sucesso": false
+  },
+  {
+    "execucao": 3,
+    "inicio": "2026-10-19T15:39:30.425Z",
+    "duracaoSegundos": 43.202,
+    "sucesso": false
+  },
+  {
+    "execucao": 4,
+    "inicio": "2026-10-19T15:40:14.431Z",
+    "duracaoSegundos": 38.159,
+    "sucesso": false
+  },
+  {
+    "execucao": 5,
+    "inicio": "2026-10-19T15:40:53.394Z",
+    "duracaoSegundos": 36.914,
+    "sucesso": false
+  },
+  {
+    "execucao": 6,
+    "inicio": "2026-10-19T15:41:31.112Z",
+    "duracaoSegundos": 38.854,
+    "sucesso": false
+  },
+  {
+    "execucao": 7,
+    "inicio": "2026-10-19T15:42:10.770Z",
+    "duracaoSegundos": 40.544,
+    "sucesso": false
+  },
+  {
+    "execucao": 8,
+    "inicio": "2026-10-19T15:42:52.119Z",
+    "duracaoSegundos": 37.576,
+    "sucesso": false
+  }
+]

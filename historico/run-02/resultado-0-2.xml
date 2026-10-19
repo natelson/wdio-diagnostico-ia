@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="2" failures="1" errors="0" skipped="0">
+  <testsuite name="Fatura consulta" timestamp="2026-10-19T12:39:08" time="5.279" tests="2" failures="1" errors="0" skipped="0">
+    <properties>
+      <property name="specId" value="0"/>
+      <property name="suiteName" value="Fatura - consulta"/>
+      <property name="capabilities" value="chrome.155_0_8059_84.linux"/>
+      <property name="file" value="file://./test/specs/fatura-consulta.e2e.js"/>
+    </properties>
+    <testcase classname="chrome.155_0_8059_84.linux.Fatura_-_consulta" name="deve exibir a fatura" time="5.243">
+      <system-out><![CDATA[
+COMMAND: POST /session/d8e4cdb582d2b05bbe9571d2f8d09570/element/f.D170A339E906DCBF96A0A1533D35E820.d.8D202777D20AB0C3C59ED00207C8B2B2.e.2/clear - {}
+RESULT: {}
+COMMAND: POST /session/d8e4cdb582d2b05bbe9571d2f8d09570/element/f.D170A339E906DCBF96A0A1533D35E820.d.8D202777D20AB0C3C59ED00207C8B2B2.e.2/value - {"text":"123.456.789-09"}
+RESULT: {"text":"123.456.789-09"}
+COMMAND: POST /session/d8e4cdb582d2b05bbe9571d2f8d09570/element/f.D170A339E906DCBF96A0A1533D35E820.d.8D202777D20AB0C3C59ED00207C8B2B2.e.3/clear - {}
+RESULT: {}
+COMMAND: POST /session/d8e4cdb582d2b05bbe9571d2f8d09570/element/f.D170A339E906DCBF96A0A1533D35E820.d.8D202777D20AB0C3C59ED00207C8B2B2.e.3/value - {"text":"demo123"}
+RESULT: {"text":"demo123"}
+COMMAND: POST /session/d8e4cdb582d2b05bbe9571d2f8d09570/element/f.D170A339E906DCBF96A0A1533D35E820.d.8D202777D20AB0C3C59ED00207C8B2B2.e.4/click - {}
+RESULT: {}
+COMMAND: GET /session/d8e4cdb582d2b05bbe9571d2f8d09570/element/f.D170A339E906DCBF96A0A1533D35E820.d.380C29A67985B5256EFACF3460E50999.e.16/text - {}
+RESULT: {}
+]]></system-out>
+    </testcase>
+    <testcase classname="chrome.155_0_8059_84.linux.Fatura_-_consulta" name="deve exibir as parcelas com opcao de antecipar" time="0.033">
+      <failure message="expect(received).toBe(expected) // Object.is equality&#xA;&#xA;Expected: true&#xA;Received: false"/>
+      <system-out><![CDATA[
+COMMAND: DELETE /session/d8e4cdb582d2b05bbe9571d2f8d09570 - {}
+RESULT: {}
+]]></system-out>
+      <system-err><![CDATA[
+Error: expect(received).toBe(expected) // Object.is equality
+
+Expected: true
+Received: false
+    at Context.<anonymous> (test/specs/fatura-consulta.e2e.js:14:96)
+]]></system-err>
+    </testcase>
+  </testsuite>
+</testsuites>
